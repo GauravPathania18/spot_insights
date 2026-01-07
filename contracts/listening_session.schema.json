@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "title": "ListeningSession",
+  "description": "SESSION DEFINITION:\n- A session starts when a track begins playing AND playback_state = playing.\n- A session ends when the track changes OR playback stops for more than 30 seconds.\n- Pauses shorter than 30 seconds are considered part of the same session.\n- This definition must remain stable across versions. Any change requires a major version bump.",
+  "type": "object",
+  "required": [
+    "session_id",
+    "user_id",
+    "track",
+    "started_at",
+    "ended_at",
+    "duration_listened_ms",
+    "paused_ms",
+    "skipped",
+    "source"
+  ],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "UUID generated locally for this listening session"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Internal user identifier"
+    },
+    "track": {
+      "type": "object",
+      "required": ["id", "name", "artist"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Spotify track ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Track name"
+        },
+        "artist": {
+          "type": "string",
+          "description": "Primary artist name"
+        }
+      }
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC timestamp when playback started"
+    },
+    "ended_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC timestamp when playback ended"
+    },
+    "duration_listened_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total active listening time excluding pauses"
+    },
+    "paused_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total time playback was paused during the session"
+    },
+    "skipped": {
+      "type": "boolean",
+      "description": "True if the track was skipped before significant completion"
+    },
+    "source": {
+      "type": "string",
+      "enum": ["desktop", "web", "mobile"],
+      "description": "Playback source device"
+    }
+  }
+}

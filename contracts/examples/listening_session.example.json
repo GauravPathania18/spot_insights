@@ -1,0 +1,15 @@
+{
+  "session_id": "f1a2b3c4",
+  "user_id": "u_123",
+  "track": {
+    "id": "3n3Ppam7vgaVa1iaRUc9Lp",
+    "name": "Mr. Brightside",
+    "artist": "The Killers"
+  },
+  "started_at": "2026-01-05T09:12:10Z",
+  "ended_at": "2026-01-05T09:15:45Z",
+  "duration_listened_ms": 210000,
+  "paused_ms": 15000,
+  "skipped": false,
+  "source": "desktop"
+}
